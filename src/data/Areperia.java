@@ -252,13 +252,13 @@ public class Areperia {
 
         
         System.out.print("" + (Collections.max(colaMax)));
-        System.out.print("\t" + tiempoEspera);
-        System.out.print("\t" + atendidos);
-        System.out.print("\t" + tiempoEspera / atendidos);
-        System.out.print("\t" + cola);
-        System.out.print("\t" + colaLlegada.size());
-        System.out.print("\t" + reloj);
-        System.out.print("\t" + utilidadFinal);
+        System.out.print("\t\t" + tiempoEspera);
+        System.out.print("\t\t" + atendidos);
+        System.out.print("\t\t\t" + tiempoEspera / atendidos);
+        System.out.print("\t\t" + cola);
+        System.out.print("\t\t" + colaLlegada.size());
+        System.out.print("\t\t\t" + reloj);
+        System.out.print("\t\t" + utilidadFinal);
 
     }
 

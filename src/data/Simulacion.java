@@ -31,23 +31,32 @@ public class Simulacion {
     public Simulacion() {
         filasResultados = new ArrayList<String>();
     }
-
+    
+    /**
+     * recibe la cantidad de anhos a simular, calcula la cantidad de vehiculos a 
+     * producir y ejecuta las 50 simulaciones para obtener los costos y tiempos promedio
+     * de garantias y fallos respectivamente
+     * @param m anhos simulados
+     */
     public void ejecutarSimulacion(int m) {
         this.m = m;
         this.cantVehiculos = (m * 10);
         double sumCostoTotalPromedioGarantia = 0;
         double sumTiempoTotalPromedioFallo = 0;
-        for (int i = 1; i < 51; i++) {
+        for (int i = 1; i < 51; i++) {//50 simulaciones
             CarCompany cc = new CarCompany();
-            cc.procesoVehiculos(m);
+            cc.procesoVehiculos(m);//simulacion individual
             sumCostoTotalPromedioGarantia = sumCostoTotalPromedioGarantia + cc.getCostoTotalGarantia();
             sumTiempoTotalPromedioFallo = sumTiempoTotalPromedioFallo + cc.getPromedioFalla();
-            filasResultados.add((String) cc.resultado(i));
+            filasResultados.add((String) cc.resultado(i));//resultado de la simulacion individual
         }
         tiempoTotalPromedioFallo = sumTiempoTotalPromedioFallo / 50;
         costoTotalPromedioGarantia = sumCostoTotalPromedioGarantia / 50;
     }
 
+    /**
+     * se imprimen los resultados de cada simulacion
+     */
     public void resultadoSimulacion() {
         DecimalFormat df = new DecimalFormat("#.##");
         System.out.println("-----------------------------");
@@ -90,14 +99,17 @@ public class Simulacion {
         return diferencia;
     }
 
-    public void ejecutarSimulacion2() {
+    /**
+     * Ejecuta la simulacion de la areperia
+     */
+    public void ejecutarSimulacion2(int numEmpleados) {
         //for (int j = 1; j <= 3; j++) {
         //   System.out.println(j);
         System.out.println("Cola max \t Tiempo Espera \t Atendidos \t Tiempo Espera Prom \t Cola \t Cola Restantes \t Finaliza Jornada \t Utilidad");
         for (int i = 0; i < 30; i++) {
             Areperia a = new Areperia();
             System.out.println("");
-            a.iniciarJornada(1);
+            a.iniciarJornada(numEmpleados);
             //System.out.println("Atendidos: " + a.getAtendidos());
             //System.out.println("Utilidad: " + a.getUtilidadFinal());
         }
@@ -120,7 +132,7 @@ public class Simulacion {
          */
 
         Simulacion s = new Simulacion();
-        s.ejecutarSimulacion2();
+        s.ejecutarSimulacion2(1);
 
     }
 
